@@ -1,0 +1,76 @@
+
+.goods-list {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.goods-item {
+    border: 1px solid wheat;
+    width: 150px;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    margin: 10px 10px;
+}
+
+
+.header{
+    height: 75px;
+    background-color: dimgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-icon-shopSearch{
+    display: flex;
+}
+
+.header-icon-burgerBascet{
+    display: flex;
+}
+
+.header-icon-shop{
+    width: 50px;
+    height: 50px;
+    background-image: url(picture/shop.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    background-position: center;
+}
+
+.header-icon-search{
+    width: 50px;
+    height: 50px;
+    background-image: url(picture/search.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    background-position: center;
+    margin-left: 35px;
+}
+
+.header-icon-burger{
+    width: 50px;
+    height: 50px;
+    background-image: url(picture/burger.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    background-position: center;
+}
+
+.header-icon-bascet{
+    width: 50px;
+    height: 50px;
+    background-image: url(picture/bascet.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    background-position: center;
+    margin-left: 35px;
+}
+    
+
