@@ -3,6 +3,7 @@ const goods = [
     { title: 'Socks', price: 50 },
     { title: 'Jacket', price: 350 },
     { title: 'Shoes', price: 250 },
+    { title: 'T-shirt', price: 400 },
 ]
 
 const renderGoodsItem = (title, price) => {
