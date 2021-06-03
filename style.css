@@ -17,7 +17,7 @@
 
 .header{
     height: 75px;
-    background-color: rgb(66, 61, 61);
+    background-color: rgb(0, 217, 255);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -34,7 +34,7 @@
 .header-icon-shop{
     width: 50px;
     height: 50px;
-    background-image: url(picture/shop.png);
+   
     background-size: 75%;
     background-repeat: no-repeat;
     flex-wrap: wrap;
@@ -44,7 +44,7 @@
 .header-icon-search{
     width: 50px;
     height: 50px;
-    background-image: url(picture/search.png);
+    
     background-size: 65%;
     background-repeat: no-repeat;
     flex-wrap: wrap;
@@ -55,7 +55,7 @@
 .header-icon-burger{
     width: 50px;
     height: 50px;
-    background-image: url(picture/burger.png);
+    
     background-size: 65%;
     background-repeat: no-repeat;
     flex-wrap: wrap;
@@ -65,7 +65,7 @@
 .header-icon-bascet{
     width: 50px;
     height: 50px;
-    background-image: url(picture/bascet.png);
+    
     background-size: 65%;
     background-repeat: no-repeat;
     flex-wrap: wrap;
