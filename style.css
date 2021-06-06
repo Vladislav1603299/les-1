@@ -12,6 +12,8 @@
     box-sizing: border-box;
     padding: 0px 20px;
     margin: 10px 10px;
+    display: flex;
+    flex-direction:  column ;
 }
 
 
@@ -71,6 +73,19 @@
     flex-wrap: wrap;
     background-position: center;
     margin-left: 35px;
+}
+
+.button{
+    width: 150px;
+    height: 25px;
+    background-color: rgb(0, 217, 255);;
+}
+
+.conteyner{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
 }
     
 
