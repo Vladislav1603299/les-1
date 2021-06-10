@@ -14,6 +14,7 @@ class GoodsItem {
 class GoodsList {
   constructor() {
     this.goods = [];
+    this.filteredGoods = [];
   }
   fetchGoods() {
     this.goods = [
@@ -22,6 +23,8 @@ class GoodsList {
       { title: 'Jacket', price: 350 },
       { title: 'Shoes', price: 250 },
     ];
+
+
   }
   render() {
     let listHtml = '';
@@ -30,8 +33,10 @@ class GoodsList {
       listHtml += goodItem.render();
     });
     document.querySelector('.goods-list').innerHTML = listHtml;
+
+
   }
-  calcAllGoods() {
+  calcAllGoods()  {
     let totalPrice = 0;
     this.goods.forEach(good => {
       if (good.price !== undefined) {
@@ -39,10 +44,23 @@ class GoodsList {
         console.log(good.price);
       }
     });
+   
     let totalGoodsAnswer = "Все товары на сумму $" + totalPrice;
     document.querySelector('.goods-total').innerHTML = totalGoodsAnswer;
   }
+
+  
+
 }
+
+
+
+
+  
+  
+
+  
+
 
 
 
@@ -90,3 +108,14 @@ window.onload = () => {
   list.render();
 
 }
+
+function regxtText(){
+  let str = document.getElementById('text').value;
+  let regexpAllPoints = new RegExp('\'', 'gm');
+  let regexpReturnApostroph = /\b\"\b/gm;
+  let newstr = str.replace(regexpAllPoints, '"');
+  newstr = newstr.replace(regexpReturnApostroph, '\'');
+  document.getElementById('output').value = newstr;
+}
+document.getElementById('text').addEventListener("keyup", regxtText);
+
