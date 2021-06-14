@@ -6,27 +6,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+
   <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <header class="header">
-      <div class="header-icon-shopSearch">
-        <button class="header-icon-shop" type="button"></button>
-        <button class="header-icon-search" type="button"></button>
-      </div>
-      <div class="header-icon-burgerBascet">
-        <button class="header-icon-burger" type="button"></button>
-        <button class="header-icon-bascet" type="button"></button>
-      </div>
-    </header>
+  <div id="app">
+    <header>
+      <header class="header">
+        <div class="header-icon-shopSearch">
+          <a href="index.html"><img class="header-icon-shop" src="picture/shop.png" alt="logo"></a>
+          <a href="#"><img class="header-icon-search" src="picture/search.png" alt="logo"></a>
+          <input type="text" class="input" id="input" v-model="searchLine">
+          <button class="button-search" onclick="filterGoods()">Искать</button>
+        </div>
+        <div class="header-icon-burgerBascet">
+          <a href="#"><img class="header-icon-burger" src="picture/burger.png" alt="logo"></a>
+          <a href="bascet.html"><img class="header-icon-bascet" src="picture/bascet.png" alt="logo"></a>
 
-    <main>
-      <div class="goods-list"></div>
-    </main>
-    </main>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="goods-list"></div>
+        <!---<div class="goods-item" v-for="good in filteredGoods">
+           <h3>{{ good.product_name }}</h3>
+            <p>{{ good.price }}</p>-->
+  </div>
+
+  <div class="bascet">
+    <h3 class="bascet-name">Корзина</h3>
+
+  </div>
+  </main>
+
+
+  </div>
+  <script src="vue.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
