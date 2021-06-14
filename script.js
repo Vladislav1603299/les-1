@@ -1,3 +1,5 @@
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 class GoodsItem {
   constructor(title, price, button) {
     this.title = title;
@@ -11,21 +13,69 @@ class GoodsItem {
 
 
 
+const app = new Vue({
+  el: '#app',
+  data: {
+    goods: [],
+    filteredGoods: [],
+    searchLine: ''
+  },
+
+  methods: {
+    makeGETRequest(url, callback) {
+      const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+      var xhr;
+
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          callback(xhr.responseText);
+        }
+      }
+
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+  },
+
+  mounted() {
+    this.makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
+      this.goods = goods;
+      this.filteredGoods = goods;
+    });
+  }
+
+});
+
+
+
+
+
+
+
 class GoodsList {
   constructor() {
     this.goods = [];
     this.filteredGoods = [];
   }
+
+
   fetchGoods() {
+
     this.goods = [
-      { title: 'Shirt', price: 150 },
-      { title: 'Socks', price: 50 },
-      { title: 'Jacket', price: 350 },
-      { title: 'Shoes', price: 250 },
-    ];
-
-
+      { title: 'Шорты', price: 150 },
+      { title: 'Носки', price: 50 },
+      { title: 'Пиджак', price: 350 },
+      { title: 'Туфли', price: 250 },
+    ]
   }
+
   render() {
     let listHtml = '';
     this.goods.forEach(good => {
@@ -36,7 +86,7 @@ class GoodsList {
 
 
   }
-  calcAllGoods()  {
+  calcAllGoods() {
     let totalPrice = 0;
     this.goods.forEach(good => {
       if (good.price !== undefined) {
@@ -44,22 +94,27 @@ class GoodsList {
         console.log(good.price);
       }
     });
-   
+
     let totalGoodsAnswer = "Все товары на сумму $" + totalPrice;
     document.querySelector('.goods-total').innerHTML = totalGoodsAnswer;
   }
 
-  
+  filterGoods() {
+
+  }
+
 
 }
 
 
 
 
-  
-  
 
-  
+
+
+
+
+
 
 
 
@@ -109,13 +164,14 @@ window.onload = () => {
 
 }
 
-function regxtText(){
-  let str = document.getElementById('text').value;
-  let regexpAllPoints = new RegExp('\'', 'gm');
-  let regexpReturnApostroph = /\b\"\b/gm;
-  let newstr = str.replace(regexpAllPoints, '"');
-  newstr = newstr.replace(regexpReturnApostroph, '\'');
-  document.getElementById('output').value = newstr;
+function regxtText() {
+  {
+    let str = document.getElementById('text').value;
+    let regexpAllPoints = new RegExp('\'', 'gm');
+    let regexpReturnApostroph = /\b\"\b/gm;
+    let newstr = str.replace(regexpAllPoints, '"');
+    newstr = newstr.replace(regexpReturnApostroph, '\'');
+    document.getElementById('output').value = newstr;
+  }
+  document.getElementById('text').addEventListener("keyup", regxtText);
 }
-document.getElementById('text').addEventListener("keyup", regxtText);
-

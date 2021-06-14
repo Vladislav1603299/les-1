@@ -76,8 +76,6 @@
 }
 
 .button{
-    width: 150px;
-    height: 25px;
     background-color: rgb(0, 217, 255);;
 }
 
@@ -87,6 +85,32 @@
     margin: 0 auto;
     align-items: center;
 }
+
+.input{ 
+    height: 25px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.button-search{
+    background-color: rgb(0, 217, 255);
+    height: 32px;
+    margin-top: 10px;
+}
+
+
+.bascet{
+    border: 1px solid black;
+    margin-top: 100px;
+    height: 150px;
+    width: 100%;
+}
+
+.bascet-name{
+    text-align: center;
+    margin: 0;
+}
+
     
 
 
