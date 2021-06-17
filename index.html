@@ -17,8 +17,8 @@
         <div class="header-icon-shopSearch">
           <a href="index.html"><img class="header-icon-shop" src="picture/shop.png" alt="logo"></a>
           <a href="#"><img class="header-icon-search" src="picture/search.png" alt="logo"></a>
-          <input type="text" class="input" id="input" v-model="searchLine">
-          <button class="button-search" onclick="filterGoods()">Искать</button>
+          <input type="text" class="input" id="input" v-model="searchLine">    
+          <search name="Искать"></search>
         </div>
         <div class="header-icon-burgerBascet">
           <a href="#"><img class="header-icon-burger" src="picture/burger.png" alt="logo"></a>
@@ -28,17 +28,16 @@
       </header>
 
       <main class="main">
-        <div class="goods-list"></div>
-        <!---<div class="goods-item" v-for="good in filteredGoods">
+        <div class="goods-list">
+           <!---<div class="goods-item" v-for="good in filteredGoods">
            <h3>{{ good.product_name }}</h3>
-            <p>{{ good.price }}</p>-->
-  </div>
-
-  <div class="bascet">
-    <h3 class="bascet-name">Корзина</h3>
-
-  </div>
-  </main>
+           <p>{{ good.price }}</p>-->
+        </div>
+      </main>
+      <main>
+        <goods-list :goods="filteredGoods"></goods-list>
+      </main>
+      <basket name="Корзина"></basket>
 
 
   </div>

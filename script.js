@@ -11,6 +11,40 @@ class GoodsItem {
   }
 }
 
+Vue.component('goods-list', {
+  props: ['goods'],
+  template: `
+    <div class="goods-list">
+      <goods-item v-for="good in goods" :good="good"></goods-item>
+    </div>
+  `
+});
+
+Vue.component('goods-item', {
+  props: ['good'],
+  template: `
+    <div class="goods-item">
+      <h3>{{ good.product_name }}</h3>
+      <p>{{ good.price }}</p>
+    </div>
+  `
+});
+
+Vue.component('basket', {
+  props: ['name'],
+  template: `<div class="bascet">
+  <h3 class="bascet-name1">{{name}}</h3>
+  </div>`
+});
+
+Vue.component('search', {
+  props: ['name'],
+  template: `
+  <button class="button-search" onclick="filterGoods()">{{name}}</button>
+  `
+});
+
+
 
 
 const app = new Vue({
@@ -18,7 +52,8 @@ const app = new Vue({
   data: {
     goods: [],
     filteredGoods: [],
-    searchLine: ''
+    searchLine: '',
+    isVisibleCart: ''
   },
 
   methods: {
