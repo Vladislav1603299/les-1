@@ -1,4 +1,4 @@
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API_URL = "http://localhost:3000";
 
 class GoodsItem {
   constructor(title, price, button) {
@@ -11,24 +11,38 @@ class GoodsItem {
   }
 }
 
-Vue.component('goods-list', {
-  props: ['goods'],
+Vue.component("goods-list", {
+  props: ["goods"],
   template: `
     <div class="goods-list">
-      <goods-item v-for="good in goods" :good="good"></goods-item>
+      <goods-item v-for="goodEntity in goods" :goodProp="goodEntity"></goods-item>
     </div>
-  `
+  `,
 });
 
-Vue.component('goods-item', {
-  props: ['good'],
+Vue.component("goods-item", {
+  props: ["goodProp"],
+  methods: {
+    async addToCart() {
+      const response = await fetch(`${API_URL}/addToCart`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(this.goodProp)
+      });
+    },
+  },
   template: `
-    <div class="goods-item">
-      <h3>{{ good.product_name }}</h3>
-      <p>{{ good.price }}</p>
+    <div class="goods-item" @click=addToCart>
+      <h3>{{goodProp.product_name}}</h3>
+      <p>{{goodProp.price}}</p>
     </div>
-  `
+  `,
 });
+
+
 
 Vue.component('basket', {
   props: ['name'],
@@ -48,46 +62,31 @@ Vue.component('search', {
 
 
 const app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
     goods: [],
     filteredGoods: [],
-    searchLine: '',
-    isVisibleCart: ''
+    busketGoods: [],
+    searchLine: "",
   },
 
   methods: {
-    makeGETRequest(url, callback) {
-      const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-
-      var xhr;
-
-      if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-      } else if (window.ActiveXObject) {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    async getProducts() {
+      const responce = await fetch(`${API_URL}/catalog`);
+      if (responce.ok) {
+        const catalogItems = await responce.json();
+        this.goods = catalogItems;
+        this.filteredGoods = catalogItems;
+      } else {
+        alert("Ошибка при соединении с сервером");
       }
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          callback(xhr.responseText);
-        }
-      }
-
-      xhr.open('GET', url, true);
-      xhr.send();
-    }
+    },
   },
 
-  mounted() {
-    this.makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
-      this.goods = goods;
-      this.filteredGoods = goods;
-    });
-  }
-
+  async mounted() {
+    await this.getProducts();
+  },
 });
-
 
 
 
@@ -172,10 +171,14 @@ class Basket {
     this.button = button;
   }
   // Добавление товара в корзину (привязываем на нажатие кнопки)
-  addToBasket() { this.addGoods }
+  addToBasket() {
+    fetch(`${API_URL}/addToCart`);
+  }
 
   // Удаление товара из корзины (привязываем на нажатие кнопки)
-  deleteFromBasket() { }
+  deleteFromBasket() {
+    fetch(`${API_URL}/deleteCart`);
+  }
 
   // Считаем стоимость и количество товаров в корзине
   calcBasket() { }

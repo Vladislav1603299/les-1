@@ -17,7 +17,7 @@
         <div class="header-icon-shopSearch">
           <a href="index.html"><img class="header-icon-shop" src="picture/shop.png" alt="logo"></a>
           <a href="#"><img class="header-icon-search" src="picture/search.png" alt="logo"></a>
-          <input type="text" class="input" id="input" v-model="searchLine">    
+          <input type="text" class="input" id="input" v-model="searchLine">
           <search name="Искать"></search>
         </div>
         <div class="header-icon-burgerBascet">
@@ -29,20 +29,17 @@
 
       <main class="main">
         <div class="goods-list">
-           <!---<div class="goods-item" v-for="good in filteredGoods">
-           <h3>{{ good.product_name }}</h3>
-           <p>{{ good.price }}</p>-->
+          <goods-list :goods="filteredGoods"></goods-list>
         </div>
       </main>
-      <main>
-        <goods-list :goods="filteredGoods"></goods-list>
-      </main>
+
       <basket name="Корзина"></basket>
 
 
   </div>
   <script src="vue.js"></script>
   <script src="script.js"></script>
+
 </body>
 
 </html>
